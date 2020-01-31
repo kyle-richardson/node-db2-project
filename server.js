@@ -24,7 +24,8 @@ server.get('/api/cars/', (req, res)=> {
 })
 
 server.post('/api/cars/', (req, res)=> {
-    db('cars')
+    const body = req.body
+    db('cars').insert(body)
         .then(promise=> {
             res.status(200).json(promise)
         })
